@@ -7,17 +7,26 @@
     <title>Archery</title>
   </head>
   <body onload="createTarget()">
-    <canvas id="myCanvas" width="600" height="600" onclick="addArrow()">
+    <div class="row" id="scoreSheet">
+      <div class="col-md-2 col-xs-2 scoreText">Score: </div>
+      <div class="col-md-2 col-xs-2 scoreText" id="scoreBoard"></div>
+      <div class="col-md-2 col-xs-2 quiverText">Arrows: </div>
+      <div class="col-md-2 col-xs-2 quiverText" id="quiver"></div>
+      <div class="col-md-2 col-xs-2 avgText">Average: </div>
+      <div class="col-md-2 col-xs-2 avgText" id="average"></div>
+    </div>
+    <div class="row" id="scoreList">
+      <div class="col-md-12 col-xs-12" id="scoreListText"></div>
+    </div>
+
+    <canvas id="targetLayer" width="600" height="600">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+    <canvas id="arrowLayer" width="600" height="600" onclick="addArrow()">
     Your browser does not support the HTML5 canvas tag.</canvas>
   </body>
-  <div class="row" id="scoreSheet">
-    <div class="col-md-3 col-xs-3 scoreText">Score: </div>
-    <div class="col-md-3 col-xs-3 scoreText" id="scoreBoard"></div>
-    <div class="col-md-3 col-xs-3 quiverText">Arrows: </div>
-    <div class="col-md-3 col-xs-3 quiverText" id="quiver"></div>
-  </div>
-<input type="text" id="newRing"/>
-<button onClick="newTarget()">generate</button>
+
+<!--<input type="text" id="newRing"/>
+<button onClick="newTarget()">generate</button>-->
 
   <script src="js/archery.js"/></script>
 </html>
