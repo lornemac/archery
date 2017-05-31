@@ -3,13 +3,19 @@
   <head>
     <meta charset="utf-8">
     <link type="text/css" rel="stylesheet" href="css/target.css" />
+      <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
     <title>Archery</title>
   </head>
   <body onload="createTarget()">
     <canvas id="myCanvas" width="600" height="600" onclick="addArrow()">
     Your browser does not support the HTML5 canvas tag.</canvas>
   </body>
-
+  <div class="row" id="scoreSheet">
+    <div class="col-md-3 col-xs-3 scoreText">Score: </div>
+    <div class="col-md-3 col-xs-3 scoreText" id="scoreBoard"></div>
+    <div class="col-md-3 col-xs-3 quiverText">Arrows: </div>
+    <div class="col-md-3 col-xs-3 quiverText" id="quiver"></div>
+  </div>
 <input type="text" id="newRing"/>
 <button onClick="newTarget()">generate</button>
 

@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'Chewy';
+  src: url('../fonts/chewy.ttf')format('truetype');
+}
+@font-face {
+  font-family: 'ArchitectsDaughter';
+  src: url('../fonts/ArchitectsDaughter.ttf')format('truetype');
+}
+
+.scoreText {
+  font-size: 96px;
+  color: #468966;
+  text-align: center;
+  font-family: 'Chewy', cursive;
+}
+
+.quiverText {
+  font-size: 96px;
+  color: #c56966;
+  text-align: center;
+  font-family: 'Chewy', cursive;
+}
