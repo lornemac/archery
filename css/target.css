@@ -2,21 +2,45 @@
   font-family: 'Chewy';
   src: url('../fonts/chewy.ttf')format('truetype');
 }
-@font-face {
-  font-family: 'ArchitectsDaughter';
-  src: url('../fonts/ArchitectsDaughter.ttf')format('truetype');
+
+.quiverText {
+  color: #468966;
 }
 
 .scoreText {
-  font-size: 96px;
-  color: #468966;
+  color: #c56966;
+}
+
+.avgText {
+  color: #017cc1;
+}
+
+#scoreListText {
+  color: #8077B6;
+}
+
+.avgText, #scoreListText, .quiverText, .scoreText {
+  font-size: 30px;
   text-align: center;
   font-family: 'Chewy', cursive;
 }
 
-.quiverText {
-  font-size: 96px;
-  color: #c56966;
-  text-align: center;
-  font-family: 'Chewy', cursive;
+#scoreList {
+  border-top: 2px;
+  border-bottom: 2px;
+  border-color: #f9a538;
+}
+
+#targetLayer {
+  position: absolute;
+  left: 0;
+  top: 130px;
+  z-index: 1;
+}
+
+#arrowLayer {
+  position: absolute;
+  left: 0;
+  top: 130px;
+  z-index: 2;
 }
