@@ -2,6 +2,10 @@
   font-family: 'Chewy';
   src: url('../fonts/chewy.ttf')format('truetype');
 }
+@font-face {
+  font-family: 'Varela Round', sans-serif;
+  src: url('../fonts/VarelaRound-Regular.ttf')format('truetype');
+}
 
 .quiverText {
   color: #468966;
@@ -22,7 +26,7 @@
 .avgText, #scoreListText, .quiverText, .scoreText {
   font-size: 30px;
   text-align: center;
-  font-family: 'Chewy', cursive;
+  font-family: 'Varela Round', sans-serif;
 }
 
 #scoreList {
