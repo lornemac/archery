@@ -9,11 +9,15 @@
   <body onload="createTarget()">
     <div class="row" id="scoreSheet">
       <div class="col-md-2 col-xs-2 scoreText">Score: </div>
-      <div class="col-md-2 col-xs-2 scoreText" id="scoreBoard"></div>
-      <div class="col-md-2 col-xs-2 quiverText">Arrows: </div>
-      <div class="col-md-2 col-xs-2 quiverText" id="quiver"></div>
+      <div class="col-md-1 col-xs-1 scoreText" id="scoreBoard">0</div>
+      <div class="col-md-1 col-xs-1 quiverText">Arrows: </div>
+      <div class="col-md-1 col-xs-1 quiverText" id="quiver">0</div>
       <div class="col-md-2 col-xs-2 avgText">Average: </div>
-      <div class="col-md-2 col-xs-2 avgText" id="average"></div>
+      <div class="col-md-1 col-xs-1 avgText" id="average">0</div>
+      <div class="col-md-1 col-xs-1 scoreText">End: </div>
+      <div class="col-md-1 col-xs-1 scoreText" id="currentEnd">1</div>
+      <div class="col-md-1 col-xs-1 avgText"><button onClick="shootLines()">lines</button></div>
+
     </div>
     <div class="row" id="scoreList">
       <div class="col-md-12 col-xs-12" id="scoreListText"></div>
