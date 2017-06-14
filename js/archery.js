@@ -4,6 +4,8 @@ var arrowCount = 0;
 var averageScore = 0;
 var end = 0;
 var endArrowCount = 1;
+var finalTargetImage ="";
+var lastArrowImage = "";
 var sessionScore = [
   []
 ];
@@ -93,6 +95,8 @@ function rgbToHex(r, g, b) {
 /*add an arrow to the target */
 
 function addArrow() {
+/*save image for undo */
+    lastArrowImage = ctxArr.getImageData(0,0,c2.width,c2.height);
   arrowCount++;
   /*get arrow x,y location and store it into arrays */
   var x = event.clientX;
@@ -124,9 +128,10 @@ function addArrow() {
   ctxArr.strokeStyle = '#1bd15b';
   ctxArr.arc(x, y - 130, 10, 0, 2 * Math.PI);
   ctxArr.fillStyle = currEndColour;
-  ctxArr.lineWidth=5;
+  ctxArr.lineWidth = 5;
   ctxArr.stroke();
   ctxArr.fill();
+
   /*increase the various counters*/
   if (endArrowCount < 3) {
     endArrowCount++;
@@ -145,9 +150,12 @@ function addArrow() {
   document.getElementById("quiver").innerHTML = arrowCount;
   document.getElementById("average").innerHTML = averageScore;
   document.getElementById("scoreListText").innerHTML = sessionScore;
-  document.getElementById("currentEnd").innerHTML = end+1;
+  document.getElementById("currentEnd").innerHTML = end + 1;
+
   if (arrowCount == 30 && end == 10) {
     alert("end of round!  your total score was: " + score);
+    // save the final image of the target
+    finalTargetImage = ctxArr.getImageData(0,0,c2.width,c2.height);
   }
 }
 
@@ -158,6 +166,20 @@ function shootLines() {
     ctxArr.lineTo(xcoords[i + 1], ycoords[i + 1] - 130);
     ctxArr.strokeStyle = '#1bd15b';
     ctxArr.stroke();
+  }
+}
+
+function shootGroupings() {
+  var start = 0;
+  while (start < xcoords.length) {
+    for (var i = start; i < start + 2; i++) {
+      ctxArr.beginPath();
+      ctxArr.moveTo(xcoords[i], ycoords[i] - 130);
+      ctxArr.lineTo(xcoords[i + 1], ycoords[i + 1] - 130);
+      ctxArr.strokeStyle = '#DF8c1e';
+      ctxArr.stroke();
+    }
+    start += 3;
   }
 }
 
@@ -178,3 +200,11 @@ function drawLines(j) {
     ctxArr.stroke();
   }, 1000);
 }*/
+function removeAllLines(){
+  ctxArr.putImageData(finalTargetImage, 0, 0);
+}
+function undo() {
+  ctxArr.putImageData(lastArrowImage, 0, 0);
+}
+
+function saveSession() {}
