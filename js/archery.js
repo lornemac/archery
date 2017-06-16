@@ -4,7 +4,7 @@ var arrowCount = 0;
 var averageScore = 0;
 var end = 0;
 var endArrowCount = 1;
-var finalTargetImage ="";
+var finalTargetImage = "";
 var lastArrowImage = "";
 var sessionScore = [
   []
@@ -26,6 +26,25 @@ var ringColours = [
 var endColours = ["#669f4f", "#854040", "#5f7ba6", "#7d8047", "#9a5b92", "#d735a0", "#254736", "#b46a14", "#aed124", "#3a3a53"];
 var icol = 0;
 var currEndColour = endColours[icol];
+var groupColors = [];
+for (var ii = 0; ii < 10; ii++) {
+  groupColors.push({
+    value: getRandomColor()
+  });
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF'.split('');
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+
+
+
 var xcoords = [];
 var ycoords = [];
 var ringNumber = 10;
@@ -95,8 +114,8 @@ function rgbToHex(r, g, b) {
 /*add an arrow to the target */
 
 function addArrow() {
-/*save image for undo */
-    lastArrowImage = ctxArr.getImageData(0,0,c2.width,c2.height);
+  /*save image for undo */
+  lastArrowImage = ctxArr.getImageData(0, 0, c2.width, c2.height);
   arrowCount++;
   /*get arrow x,y location and store it into arrays */
   var x = event.clientX;
@@ -155,7 +174,7 @@ function addArrow() {
   if (arrowCount == 30 && end == 10) {
     alert("end of round!  your total score was: " + score);
     // save the final image of the target
-    finalTargetImage = ctxArr.getImageData(0,0,c2.width,c2.height);
+    finalTargetImage = ctxArr.getImageData(0, 0, c2.width, c2.height);
   }
 }
 
@@ -171,15 +190,22 @@ function shootLines() {
 
 function shootGroupings() {
   var start = 0;
+  var currGroupCol = 0;
   while (start < xcoords.length) {
     for (var i = start; i < start + 2; i++) {
       ctxArr.beginPath();
       ctxArr.moveTo(xcoords[i], ycoords[i] - 130);
       ctxArr.lineTo(xcoords[i + 1], ycoords[i + 1] - 130);
-      ctxArr.strokeStyle = '#DF8c1e';
+      ctxArr.strokeStyle = groupColors[currGroupCol].value;
       ctxArr.stroke();
     }
     start += 3;
+    ctxArr.beginPath();
+    ctxArr.moveTo(xcoords[start - 1], ycoords[start - 1] - 130);
+    ctxArr.lineTo(xcoords[start - 3], ycoords[start - 3] - 130);
+    ctxArr.strokeStyle = groupColors[currGroupCol].value;
+    ctxArr.stroke();
+    currGroupCol++;
   }
 }
 
@@ -200,9 +226,10 @@ function drawLines(j) {
     ctxArr.stroke();
   }, 1000);
 }*/
-function removeAllLines(){
+function removeAllLines() {
   ctxArr.putImageData(finalTargetImage, 0, 0);
 }
+
 function undo() {
   ctxArr.putImageData(lastArrowImage, 0, 0);
 }
